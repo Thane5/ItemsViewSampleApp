@@ -9,6 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <DataTemplate x:Key="ImageTemplate" x:DataType="local:Item">
+            <ItemContainer HorizontalAlignment="Left" Width="200" Height="140" AutomationProperties.Name="{x:Bind Title}">
+                <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{x:Bind ImageLocation}" Margin="4" AutomationProperties.AccessibilityView="Raw"/>
+            </ItemContainer>
+        </DataTemplate>
+    </Page.Resources>
+
     <Grid
         Margin="5"
         ColumnDefinitions="*,*"
@@ -31,48 +39,6 @@
                 Content="Apply" />
         </StackPanel>
 
-        <!--  ListView  -->
-        <TextBlock
-            Grid.Row="1"
-            Grid.Column="0"
-            FontSize="15"
-            FontWeight="Bold"
-            Foreground="LightPink"
-            Text="ListView" />
-        <Border
-            Grid.Row="2"
-            Grid.Column="0"
-            BorderBrush="LightPink"
-            BorderThickness="1">
-            <ListView
-                ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
-                SelectionMode="Multiple">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="local:Item">
-                        <TextBlock Text="{x:Bind Content}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Border>
-
-        <!--  ItemsRepeater + ScrollViewer  -->
-        <!--<TextBlock
-            Grid.Row="1"
-            Grid.Column="1"
-            FontSize="15"
-            FontWeight="Bold"
-            Foreground="LightGreen"
-            Text="ItemsRepeater + ScrollViewer" />
-        <Border
-            Grid.Row="2"
-            Grid.Column="1"
-            BorderBrush="LightGreen"
-            BorderThickness="1">
-            <ScrollViewer>
-                <ItemsRepeater ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}" />
-            </ScrollViewer>
-        </Border>-->
-
         <!--  ItemsView  -->
         <TextBlock
             Grid.Row="1"
@@ -83,30 +49,15 @@
             Text="ItemsView" />
         <Border
             Grid.Row="2"
-            Grid.Column="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
             BorderBrush="LightBlue"
             BorderThickness="1">
-            <ItemsView
+            <ItemsView 
                 ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
-                SelectionMode="Multiple">
-                <ItemsView.Resources>
-                    <HorizontalAlignment x:Key="ItemContainerCheckboxHorizontalAlignment">Left</HorizontalAlignment>
-                    <VerticalAlignment x:Key="ItemContainerCheckboxVerticalAlignment">Center</VerticalAlignment>
-                    <Thickness x:Key="ItemContainerCheckBoxMargin">10,-2</Thickness>
-                </ItemsView.Resources>
-                <ItemsView.Layout>
-                    <UniformGridLayout MinItemWidth="150" />
-                </ItemsView.Layout>
-                <ItemsView.ItemTemplate>
-                    <DataTemplate x:DataType="local:Item">
-                        <ItemContainer Margin="0,0,0,1">
-                            <Grid Padding="40,10,10,10">
-                                <TextBlock Text="{x:Bind Content}" />
-                            </Grid>
-                        </ItemContainer>
-                    </DataTemplate>
-                </ItemsView.ItemTemplate>
-            </ItemsView>
+                Width="220" Height="400" 
+                HorizontalAlignment="Left"
+                ItemTemplate="{StaticResource ImageTemplate}"/>
         </Border>
 
     </Grid>

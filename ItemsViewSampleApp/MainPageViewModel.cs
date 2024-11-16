@@ -7,6 +7,8 @@ namespace ItemsViewSampleApp;
 public class Item
 {
     public string Content { get; set; } = string.Empty;
+    public string Title { get; set; }= "Title";
+    public string ImageLocation { get; set; } = "Assets/StoreLogo.png";
 }
 
 public partial class MainPageViewModel : ObservableObject
