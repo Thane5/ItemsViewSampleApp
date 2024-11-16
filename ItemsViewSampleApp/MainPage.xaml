@@ -24,14 +24,11 @@
 
     <Grid
         Margin="5"
-        ColumnDefinitions="*,*"
-        ColumnSpacing="5"
-        RowDefinitions="Auto,Auto,*">
+        RowDefinitions="Auto,*">
 
+        <!--  Items Spawner  -->
         <StackPanel
             Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
             Orientation="Horizontal"
             Spacing="5">
             <NumberBox
@@ -43,27 +40,17 @@
                 CommandParameter="{x:Bind (x:Int32)ItemCountNumberBox.Value, Mode=OneWay}"
                 Content="Apply" />
         </StackPanel>
-
+        
         <!--  ItemsView  -->
-        <TextBlock
+        <ItemsView 
             Grid.Row="1"
-            Grid.Column="1"
-            FontSize="15"
-            FontWeight="Bold"
-            Foreground="LightBlue"
-            Text="ItemsView" />
-        <Border
-            Grid.Row="2"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            BorderBrush="LightBlue"
-            BorderThickness="1">
-            <ItemsView 
-                ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
-                Width="220" Height="600" 
-                HorizontalAlignment="Left"
-                ItemTemplate="{StaticResource ImageTemplate}"/>
-        </Border>
-
+            ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
+            Width="220" 
+            HorizontalAlignment="Left"
+            ItemTemplate="{StaticResource ImageTemplate}">
+            <ItemsView.Layout>
+                <StackLayout Spacing="5"/>
+            </ItemsView.Layout>
+        </ItemsView>
     </Grid>
 </Page>
