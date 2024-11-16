@@ -8,7 +8,7 @@ public class Item
 {
     public string Content { get; set; } = string.Empty;
     public string Title { get; set; }= "Title";
-    public string ImageLocation { get; set; } = "Assets/StoreLogo.png";
+    public string ImageLocation { get; set; } = "Assets/FUJI0016.JPG";
 }
 
 public partial class MainPageViewModel : ObservableObject
@@ -23,7 +23,10 @@ public partial class MainPageViewModel : ObservableObject
 
         for (int i = 0; i < count; i++)
         {
-            Items.Add(new Item { Content = $"Item {i + 1}" });
+            Items.Add(new Item { 
+                Content = $"Item {i + 1}",
+                Title= "FUJI0016.JPG"
+            });
         }
     }
 }

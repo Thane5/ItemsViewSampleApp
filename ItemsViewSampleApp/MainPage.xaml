@@ -12,7 +12,12 @@
     <Page.Resources>
         <DataTemplate x:Key="ImageTemplate" x:DataType="local:Item">
             <ItemContainer HorizontalAlignment="Left" Width="200" Height="140" AutomationProperties.Name="{x:Bind Title}">
-                <Image Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{x:Bind ImageLocation}" Margin="4" AutomationProperties.AccessibilityView="Raw"/>
+                <Grid>
+                    <Image Source="{x:Bind ImageLocation}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="70"/>
+                    <StackPanel Orientation="Vertical" Height="40" VerticalAlignment="Bottom" Padding="5,1,5,1" Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}" Opacity=".75">
+                        <TextBlock Text="{x:Bind Title}" Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                    </StackPanel>
+                </Grid>
             </ItemContainer>
         </DataTemplate>
     </Page.Resources>
@@ -55,7 +60,7 @@
             BorderThickness="1">
             <ItemsView 
                 ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
-                Width="220" Height="400" 
+                Width="220" Height="600" 
                 HorizontalAlignment="Left"
                 ItemTemplate="{StaticResource ImageTemplate}"/>
         </Border>
